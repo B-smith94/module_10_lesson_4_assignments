@@ -3,7 +3,7 @@ Assignment 1
 Task 1: Create a constructor function for the Book object with properties for title, author, and pages
 Task 2: Implement a method w/in the Book object to display book information
 Task 3: Create an array to store book objects
--implement functions to add new books adn search for books by title or author
+-implement functions to add new books and search for books by title or author
 Task 4: Create functions that utilize "filter" to filter out books that contain more than 100 pages
 -map method to add "Title:" and "Author" to the book's title and author properties
 */
@@ -13,42 +13,41 @@ function Book (title, author, pages) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    //Task 2
-    details = function() {
-        console.log("Title:", this.title, "Author:", this.author, "Pages:", this.pages)
-    }
 }
+
+ //Task 2
+Book.prototype.details = function() {
+    console.log("-Title:", this.title, "\n-Author:", this.author, "\n-Pages:", this.pages)
+}
+
+let lotr = new Book("Lord of the Rings", "Tolkien", 450);
+let hungryCatepillar = new Book("The Very Hungry Catepillar",  "Eric Carle", 20);
+
+console.log(lotr)
+console.log(hungryCatepillar)
+
+lotr.details();
+
+hungryCatepillar.details();
 
 //Task 3
-let books = []
+bookObj = []
 
-function addBook(title, author, pages) {
-    books.push(new Book(title, author, pages));
+function addBook(book) {
+    bookObj.push(book);
 }
 
-function searchAuthor(name) {
-    console.log(books.filter(author => Book.author=name));
+function searchTitle(name) {
+    const result = bookObj.find(({title}) => title === name);
+    console.log(result);
 }
+   
 
-function searchTitle(title) {
-    console.log(books.filter(title => Book.title=title));
-}
+addBook(lotr);
+addBook(hungryCatepillar);
+console.log(bookObj);
 
-//Task 4
-function filterByPages(number) {
-    books.filter(Book.pages.number);
-}
-
-function addTitle(title) {
-    books.map(title => Book.title=title);
-}
-
-function addAuthor(name) {
-    books.map(name => Book.author=name);
-}
-
-addBook("Lord of the Rings", "Tolkien", 460);
-
-console.log(books);
-searchAuthor("Tolkien");
 searchTitle("Lord of the Rings");
+searchTitle("The Very Hungry Catepillar")
+
+// Task 4
