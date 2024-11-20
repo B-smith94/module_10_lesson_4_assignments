@@ -31,7 +31,7 @@ lotr.details();
 hungryCatepillar.details();
 
 //Task 3
-bookObj = []
+bookObj = [];
 
 function addBook(book) {
     bookObj.push(book);
@@ -41,13 +41,32 @@ function searchTitle(name) {
     const result = bookObj.find(({title}) => title === name);
     console.log(result);
 }
-   
+
+function searchAuthor(name) {
+    const result = bookObj.find(({author}) => author === name);
+    console.log(result);
+}
 
 addBook(lotr);
 addBook(hungryCatepillar);
 console.log(bookObj);
 
 searchTitle("Lord of the Rings");
-searchTitle("The Very Hungry Catepillar")
+searchTitle("The Very Hungry Catepillar");
+
+searchAuthor("Tolkien");
+searchAuthor("Eric Carle");
 
 // Task 4
+function filterBooks() {
+    let books = bookObj.filter(({pages}) => pages > 100)
+    console.log(books);
+}
+
+function mapBooks() {
+    const mappedBook = bookObj.map(({author, title}) => ({"Author": author, "Title": title}));
+    console.log(mappedBook);
+}
+
+filterBooks();
+mapBooks();
